@@ -14,12 +14,12 @@
 
 @keyframes neon-pulse {
   0%, 100% { filter: brightness(1.1) saturate(1.4); }
-  50% { filter: brightness(1.4) saturate(1.8) drop-shadow(0 0 6px #ff00cc) drop-shadow(0 0 12px #00ffff); }
+  50% { filter: brightness(1.3) saturate(1.7); }
 }
 
 @utility neon-ring {
   background: conic-gradient(from var(--neon-angle), #ff0080, #ff4400, #ffdd00, #00ff88, #00cfff, #7b2fff, #ff0080);
-  animation: neon-spin 2s linear infinite, neon-pulse 3s ease-in-out infinite;
+  animation: neon-spin 2s linear infinite;
 }
 
 @utility scrollbar-hide {
