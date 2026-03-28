@@ -48,7 +48,7 @@ export function Sidebar() {
         "h-screen sticky top-0 overflow-hidden",
         "border-r border-neutral-200 dark:border-neutral-800",
         "bg-white dark:bg-black",
-        "py-3 px-3 gap-0.5 z-50"
+        "py-3 px-3 gap-0.5 z-100000"
       )}
     >
       <div className="relative flex items-center h-[72px] px-0.5 mb-2 overflow-hidden shrink-0">

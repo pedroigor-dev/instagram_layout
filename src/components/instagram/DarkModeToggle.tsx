@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useState } from "react";
+import { createPortal } from "react-dom";
 import { SunMedium, MoonStar } from "lucide-react";
 import { useTheme } from "./ThemeProvider";
 
@@ -26,10 +27,11 @@ export function DarkModeToggle() {
 
   return (
     <>
-      {overlay && (
+      {overlay && createPortal(
         <div
-          className="fixed inset-0 z-9998 pointer-events-none flex items-center justify-center"
+          className="fixed inset-0 pointer-events-none flex items-center justify-center"
           style={{
+            zIndex: 99999,
             backgroundColor: overlay === "dark" ? "#000" : "#fff",
             animation: "theme-overlay-fade 1.4s ease-in-out forwards",
           }}
@@ -64,7 +66,8 @@ export function DarkModeToggle() {
               <div className="sun-ray r-8" />
             </div>
           )}
-        </div>
+        </div>,
+        document.body
       )}
 
       <div className="relative flex items-center justify-center">
