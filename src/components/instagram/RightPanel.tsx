@@ -36,7 +36,7 @@ interface RightPanelProps {
 
 export function RightPanel({ currentUser, suggestions }: RightPanelProps) {
   return (
-    <aside className="hidden lg:flex flex-col w-80 xl:w-96 shrink-0 py-6 px-4 gap-6 sticky top-0 h-screen overflow-y-auto">
+    <aside className="hidden lg:flex flex-col w-[293px] shrink-0 py-6 pl-6 pr-2 gap-6 sticky top-6 self-start">
       <div className="flex items-center gap-3">
         <Avatar user={currentUser} size="md" />
         <div className="flex-1 min-w-0">

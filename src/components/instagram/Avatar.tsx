@@ -3,7 +3,7 @@ import type { User } from "@/types/instagram";
 
 interface AvatarProps {
   user: Pick<User, "username" | "avatar" | "displayName">;
-  size?: "xs" | "sm" | "md" | "lg" | "xl";
+  size?: "xs" | "sm" | "md" | "lg" | "xl" | "2xl";
   className?: string;
   showRing?: boolean;
   ringColor?: "gradient" | "gray";
@@ -15,6 +15,7 @@ const sizeMap = {
   md: "w-10 h-10",
   lg: "w-14 h-14",
   xl: "w-16 h-16",
+  "2xl": "w-20 h-20",
 };
 
 const ringMap = {
@@ -25,12 +26,12 @@ const ringMap = {
 export function Avatar({ user, size = "md", className, showRing, ringColor = "gradient" }: AvatarProps) {
   if (showRing && ringColor === "gradient") {
     return (
-      <div className={cn("rounded-full shrink-0", sizeMap[size], className)}>
-        <div className={cn("rounded-full bg-linear-to-tr from-yellow-400 via-pink-500 to-purple-600 p-0.5 w-full h-full")}>
+      <div className={cn("rounded-full shrink-0 bg-linear-to-tr from-yellow-400 via-pink-500 to-purple-600 p-[3px]", sizeMap[size], className)}>
+        <div className="rounded-full bg-white dark:bg-black p-[2px] w-full h-full">
           <img
             src={user.avatar}
             alt={user.username}
-            className="rounded-full w-full h-full object-cover bg-white ring-2 ring-white"
+            className="rounded-full w-full h-full object-cover block"
           />
         </div>
       </div>

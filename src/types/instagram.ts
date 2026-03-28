@@ -29,7 +29,6 @@ export interface Post {
   sendCount: number;
   isLiked: boolean;
   isSaved: boolean;
-  /** Friends who liked — shown as floating avatars on the post image */
   friendLikers: User[];
   likedByUsername?: string;
   timestamp: string;

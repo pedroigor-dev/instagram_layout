@@ -7,23 +7,24 @@ import { INITIAL_POSTS, STORIES, SUGGESTIONS, ME } from "@/data/mock";
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen bg-neutral-50 dark:bg-neutral-950 font-sans">
+    <div className="flex min-h-screen bg-white dark:bg-black font-sans">
       <Sidebar />
 
-      <div className="flex-1 flex flex-col min-w-0">
-        <header className="md:hidden flex items-center justify-between px-4 py-3 border-b border-neutral-200 dark:border-neutral-800 bg-white dark:bg-black sticky top-0 z-40">
-          <span className="font-['Billabong',cursive] text-3xl tracking-tighter">Instagram</span>
-        </header>
-
-        <div className="max-w-117.5 mx-auto w-full">
-          <Stories stories={STORIES} />
-          <div className="pb-20 md:pb-6">
-            <Feed posts={INITIAL_POSTS} />
+      <div className="flex flex-1 min-w-0 justify-center">
+        <div className="flex items-start gap-8 w-full max-w-[795px]">
+          <div className="flex-1 min-w-0 max-w-[470px]">
+            <header className="md:hidden flex items-center px-4 py-3 border-b border-neutral-200 dark:border-neutral-800 bg-white dark:bg-black sticky top-0 z-40">
+              <span className="font-['Billabong',cursive] text-3xl tracking-tighter">Instagram</span>
+            </header>
+            <Stories stories={STORIES} />
+            <div className="pb-20 md:pb-6">
+              <Feed posts={INITIAL_POSTS} />
+            </div>
           </div>
+          <RightPanel currentUser={ME} suggestions={SUGGESTIONS} />
         </div>
       </div>
 
-      <RightPanel currentUser={ME} suggestions={SUGGESTIONS} />
       <MobileNav />
     </div>
   );

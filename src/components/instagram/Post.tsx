@@ -15,8 +15,8 @@ export function Post({ post }: PostProps) {
   const { isFollowing, toggle: toggleFollow } = useFollow(post.author.isFollowing);
 
   return (
-    <article className="bg-white dark:bg-black border border-neutral-200 dark:border-neutral-800 rounded-none md:rounded-sm mb-6 last:mb-0">
-      <div className="flex items-center justify-between px-3 py-3">
+    <article className="mb-4">
+      <div className="flex items-center justify-between px-3 pt-3 pb-2">
         <div className="flex items-center gap-2.5 min-w-0">
           <Avatar
             user={post.author}
