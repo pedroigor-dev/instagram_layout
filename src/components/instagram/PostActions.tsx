@@ -42,7 +42,7 @@ export function PostActions({
           <button
             onClick={toggleLike}
             aria-label={isLiked ? "Unlike" : "Like"}
-            className="p-0 bg-transparent border-none cursor-pointer"
+            className="flex items-center gap-1.5 p-0 bg-transparent border-none cursor-pointer"
           >
             <Heart
               className={cn(
@@ -51,9 +51,11 @@ export function PostActions({
                 isLiked ? "fill-red-500 stroke-red-500" : "stroke-current fill-none"
               )}
             />
+            <span className="text-sm font-semibold">{formatCount(currentLikes)}</span>
           </button>
-          <button aria-label="Comment" className="p-0 bg-transparent border-none cursor-pointer">
+          <button aria-label="Comment" className="flex items-center gap-1.5 p-0 bg-transparent border-none cursor-pointer">
             <MessageCircle className="w-7 h-7 -scale-x-100" />
+            <span className="text-sm font-semibold">{formatCount(commentCount)}</span>
           </button>
           <button aria-label="Share" className="p-0 bg-transparent border-none cursor-pointer">
             <Send className="w-6 h-6 -rotate-12" />
@@ -72,16 +74,6 @@ export function PostActions({
             )}
           />
         </button>
-      </div>
-
-      <p className="text-sm font-semibold">
-        {formatCount(currentLikes)} curtidas
-      </p>
-
-      <div className="flex items-center gap-4 text-sm text-neutral-400">
-        <span>{formatCount(commentCount)} comentários</span>
-        <span>{formatCount(shareCount)} compartilhamentos</span>
-        <span>{formatCount(sendCount)} envios</span>
       </div>
 
       {likedByUsername && (
