@@ -1,10 +1,26 @@
 @import "tailwindcss";
-
-@theme {
-  --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-}
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
+
+@property --neon-angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes neon-spin {
+  to { --neon-angle: 360deg; }
+}
+
+@keyframes neon-pulse {
+  0%, 100% { filter: brightness(1.1) saturate(1.4); }
+  50% { filter: brightness(1.4) saturate(1.8) drop-shadow(0 0 6px #ff00cc) drop-shadow(0 0 12px #00ffff); }
+}
+
+@utility neon-ring {
+  background: conic-gradient(from var(--neon-angle), #ff0080, #ff4400, #ffdd00, #00ff88, #00cfff, #7b2fff, #ff0080);
+  animation: neon-spin 2s linear infinite, neon-pulse 3s ease-in-out infinite;
+}
 
 @utility scrollbar-hide {
   &::-webkit-scrollbar { display: none; }
@@ -26,7 +42,7 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-sans);
+  --font-sans: var(--font-poppins), ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --font-mono: var(--font-geist-mono);
   --font-heading: var(--font-sans);
   --color-sidebar-ring: var(--sidebar-ring);

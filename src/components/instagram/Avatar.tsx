@@ -26,7 +26,7 @@ const ringMap = {
 export function Avatar({ user, size = "md", className, showRing, ringColor = "gradient" }: AvatarProps) {
   if (showRing && ringColor === "gradient") {
     return (
-      <div className={cn("rounded-full shrink-0 bg-linear-to-tr from-yellow-400 via-pink-500 to-purple-600 p-[3px]", sizeMap[size], className)}>
+      <div className={cn("rounded-full shrink-0 neon-ring p-[3px]", sizeMap[size], className)}>
         <div className="rounded-full bg-white dark:bg-black p-[2px] w-full h-full">
           <img
             src={user.avatar}
