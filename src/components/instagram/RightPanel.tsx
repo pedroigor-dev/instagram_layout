@@ -16,12 +16,34 @@ function SuggestionItem({ suggestion }: SuggestionItemProps) {
     <div className="flex items-center gap-2">
       <Avatar user={suggestion.user} size="sm" />
       <div className="flex-1 min-w-0">
-        <p className="text-sm font-semibold truncate">{suggestion.user.username}</p>
-        <p className="text-xs text-neutral-400 truncate">{suggestion.reason}</p>
+        <div className="flex items-center gap-1">
+          <p className="text-sm font-semibold truncate leading-tight">{suggestion.user.displayName}</p>
+          {suggestion.user.isVerified && (
+            <svg className="w-3 h-3 fill-blue-500 shrink-0" viewBox="0 0 24 24">
+              <path d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+            </svg>
+          )}
+        </div>
+        <div className="flex items-center gap-1 mt-0.5">
+          {suggestion.mutualFollowers && suggestion.mutualFollowers.length > 0 && (
+            <div className="flex items-center shrink-0">
+              {suggestion.mutualFollowers.slice(0, 2).map((f, i) => (
+                <img
+                  key={f.username}
+                  src={f.avatar}
+                  alt={f.username}
+                  className="w-4 h-4 rounded-full border-[1.5px] border-white dark:border-neutral-900 object-cover"
+                  style={{ marginLeft: i > 0 ? "-5px" : "0" }}
+                />
+              ))}
+            </div>
+          )}
+          <p className="text-xs text-neutral-400 truncate">{suggestion.reason}</p>
+        </div>
       </div>
       <button
         onClick={toggle}
-        className="text-xs font-semibold bg-transparent border-none cursor-pointer"
+        className="text-xs font-semibold bg-transparent border-none cursor-pointer shrink-0"
         style={{ color: isFollowing ? "#737373" : "#0095f6" }}
       >
         {isFollowing ? "Seguindo" : "Seguir"}
