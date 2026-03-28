@@ -32,6 +32,7 @@ export interface Post {
   friendLikers: User[];
   likedByUsername?: string;
   timestamp: string;
+  feedType: "friend" | "recommended";
 }
 
 export interface Story {
@@ -44,4 +45,5 @@ export interface Story {
 export interface Suggestion {
   user: User;
   reason: string;
+  mutualFollowers?: Array<{ avatar: string; username: string }>;
 }

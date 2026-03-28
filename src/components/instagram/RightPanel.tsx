@@ -2,6 +2,7 @@
 
 import { Avatar } from "./Avatar";
 import { useFollow } from "@/hooks/useFollow";
+import { DarkModeToggle } from "./DarkModeToggle";
 import type { Suggestion, User } from "@/types/instagram";
 
 interface SuggestionItemProps {
@@ -43,9 +44,12 @@ export function RightPanel({ currentUser, suggestions }: RightPanelProps) {
           <p className="text-sm font-semibold truncate">{currentUser.username}</p>
           <p className="text-sm text-neutral-400 truncate">{currentUser.bio}</p>
         </div>
-        <button className="text-xs font-semibold text-blue-500 bg-transparent border-none cursor-pointer">
-          Mudar
-        </button>
+        <div className="flex items-center gap-2 shrink-0">
+          <button className="text-xs font-semibold text-blue-500 bg-transparent border-none cursor-pointer">
+            Mudar
+          </button>
+          <DarkModeToggle />
+        </div>
       </div>
 
       <div>
