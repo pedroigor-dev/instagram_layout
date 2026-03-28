@@ -15,6 +15,7 @@ export function DarkModeToggle() {
   const [overlay, setOverlay] = useState<"dark" | "light" | null>(null);
 
   const handleClick = useCallback(() => {
+    if (overlay) return;
     setBursting(true);
     setTimeout(() => setBursting(false), 420);
 
@@ -23,7 +24,7 @@ export function DarkModeToggle() {
     setTimeout(() => setOverlay(null), 1400);
 
     toggle();
-  }, [isDark, toggle]);
+  }, [isDark, toggle, overlay]);
 
   return (
     <>

@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
-import { Users, Sparkles, LayoutList, X, ChevronRight } from "lucide-react";
+import { Users, Compass, LayoutList, X, ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 export type FeedMode = "all" | "friends" | "recommended";
@@ -22,7 +22,7 @@ const OPTIONS: { mode: FeedMode; icon: React.ElementType; label: string; desc: s
   },
   {
     mode: "recommended",
-    icon: Sparkles,
+    icon: Compass,
     label: "Só recomendados",
     desc: "Descubra criadores e conteúdos novos",
   },
@@ -82,7 +82,6 @@ export function FeedFilterModal({ open, current, onChange, onClose }: FeedFilter
                 onClick={() => { onChange(mode); onClose(); }}
                 className={cn(
                   "flex items-center gap-4 w-full px-4 py-4 rounded-xl text-left",
-                  "border border-neutral-200 dark:border-neutral-800",
                   "bg-transparent cursor-pointer transition-colors",
                   "hover:bg-neutral-50 dark:hover:bg-neutral-900",
                   active && "bg-neutral-50 dark:bg-neutral-900"
