@@ -185,7 +185,7 @@ export const STORIES: Story[] = [
 export const INITIAL_POSTS: Post[] = [
   {
     id: "p1",
-    author: USERS[2], // toguro collab with ecbahia
+    author: USERS[2], 
     images: [
       "https://picsum.photos/seed/bahia1/800/800",
       "https://picsum.photos/seed/bahia2/800/800",
@@ -209,7 +209,7 @@ export const INITIAL_POSTS: Post[] = [
   },
   {
     id: "p2",
-    author: USERS[0], // travisscott
+    author: USERS[0], 
     images: [
       "https://picsum.photos/seed/travis1/800/1000",
       "https://picsum.photos/seed/travis2/800/1000",
@@ -228,7 +228,7 @@ export const INITIAL_POSTS: Post[] = [
   },
   {
     id: "p3",
-    author: USERS[7], // nandalizad
+    author: USERS[7], 
     images: ["https://picsum.photos/seed/nanda1/800/900"],
     caption: "sábado 🫶",
     likeCount: 3420,
@@ -244,7 +244,7 @@ export const INITIAL_POSTS: Post[] = [
   },
   {
     id: "p4",
-    author: USERS[6], // well_sa - isFollowing: false
+    author: USERS[6], 
     images: [
       "https://picsum.photos/seed/rec1/800/900",
       "https://picsum.photos/seed/rec2/800/900",

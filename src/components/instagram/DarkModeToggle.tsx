@@ -14,11 +14,9 @@ export function DarkModeToggle() {
   const [overlay, setOverlay] = useState<"dark" | "light" | null>(null);
 
   const handleClick = useCallback(() => {
-    // Spark burst
     setBursting(true);
     setTimeout(() => setBursting(false), 420);
 
-    // Full-screen Z overlay
     const next = isDark ? "light" : "dark";
     setOverlay(next);
     setTimeout(() => setOverlay(null), 1400);
@@ -28,7 +26,6 @@ export function DarkModeToggle() {
 
   return (
     <>
-      {/* Z sleeping overlay */}
       {overlay && (
         <div
           className="fixed inset-0 z-9998 pointer-events-none flex items-center justify-center"
@@ -37,26 +34,39 @@ export function DarkModeToggle() {
             animation: "theme-overlay-fade 1.4s ease-in-out forwards",
           }}
         >
-          {[0, 0.5, 1, 1.5].map((delay, i) => (
-            <span
-              key={i}
-              className="absolute text-4xl font-bold select-none"
-              style={{
-                color: overlay === "dark" ? "rgba(255,255,255,0.55)" : "rgba(0,0,0,0.35)",
-                top: "50%",
-                left: "50%",
-                marginTop: "-1rem",
-                marginLeft: "-0.75rem",
-                animation: `swayUpToRight 2s ease-out ${delay}s forwards`,
-              }}
-            >
-              Z
-            </span>
-          ))}
+          {overlay === "dark" ? (
+            [0, 0.5, 1, 1.5].map((delay, i) => (
+              <span
+                key={i}
+                className="absolute text-4xl font-bold select-none"
+                style={{
+                  color: "rgba(255,255,255,0.55)",
+                  top: "50%",
+                  left: "50%",
+                  marginTop: "-1rem",
+                  marginLeft: "-0.75rem",
+                  animation: `swayUpToRight 2s ease-out ${delay}s forwards`,
+                }}
+              >
+                Z
+              </span>
+            ))
+          ) : (
+            <div className="theme-sun">
+              <div className="sun-center" />
+              <div className="sun-ray r-1" />
+              <div className="sun-ray r-2" />
+              <div className="sun-ray r-3" />
+              <div className="sun-ray r-4" />
+              <div className="sun-ray r-5" />
+              <div className="sun-ray r-6" />
+              <div className="sun-ray r-7" />
+              <div className="sun-ray r-8" />
+            </div>
+          )}
         </div>
       )}
 
-      {/* Button + burst sparks */}
       <div className="relative flex items-center justify-center">
         {bursting && SPARK_ANGLES.map((angle) => (
           <span

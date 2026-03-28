@@ -60,7 +60,6 @@ export function FeedFilterModal({ open, current, onChange, onClose }: FeedFilter
         )}
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Header */}
         <div className="relative flex items-center justify-center px-14 pt-5 pb-4">
           <button
             onClick={onClose}
@@ -74,7 +73,6 @@ export function FeedFilterModal({ open, current, onChange, onClose }: FeedFilter
 
         <div className="border-t border-neutral-200 dark:border-neutral-800" />
 
-        {/* Options */}
         <div className="px-4 py-4 flex flex-col gap-3">
           {OPTIONS.map(({ mode, icon: Icon, label, desc }) => {
             const active = current === mode;
@@ -103,7 +101,6 @@ export function FeedFilterModal({ open, current, onChange, onClose }: FeedFilter
           })}
         </div>
 
-        {/* bottom safe-area spacer on mobile */}
         <div className="h-2 sm:hidden" />
       </div>
     </div>
