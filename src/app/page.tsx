@@ -68,6 +68,15 @@ export default function Home() {
 
       <MobileNav />
 
+      <a
+        href="https://www.instagram.com/_pedroigorc/"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="fixed bottom-4 right-4 z-50 text-[11px] font-medium text-neutral-400 dark:text-neutral-500 hover:text-neutral-700 dark:hover:text-neutral-300 transition-colors duration-200 select-none hidden md:block"
+      >
+        feito por devpedro
+      </a>
+
       <FeedFilterModal
         open={modalOpen}
         current={feedMode}

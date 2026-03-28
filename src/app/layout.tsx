@@ -14,6 +14,7 @@ const poppins = Poppins({
 export const metadata: Metadata = {
   title: "Instagram",
   description: "Instagram clone",
+  icons: { icon: "/instalogo.png" },
 };
 
 export default function RootLayout({
@@ -26,7 +27,7 @@ export default function RootLayout({
       lang="en"
       className={`${poppins.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">
+      <body className="min-h-full flex flex-col" suppressHydrationWarning>
         <ThemeProvider>
           <SplashScreen />
           {children}
