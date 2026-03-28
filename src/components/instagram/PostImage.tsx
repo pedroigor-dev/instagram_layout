@@ -36,7 +36,7 @@ export function PostImage({ post, className }: PostImageProps) {
       {isMulti && !isFirst && (
         <button
           onClick={prev}
-          className="absolute left-2 top-1/2 -translate-y-1/2 bg-black/40 rounded-full p-1 backdrop-blur-sm"
+          className="absolute left-2 top-1/2 -translate-y-1/2 bg-black/40 rounded-full p-1 backdrop-blur-sm cursor-pointer"
         >
           <ChevronLeft className="w-5 h-5 text-white" />
         </button>
@@ -44,7 +44,7 @@ export function PostImage({ post, className }: PostImageProps) {
       {isMulti && !isLast && (
         <button
           onClick={next}
-          className="absolute right-2 top-1/2 -translate-y-1/2 bg-black/40 rounded-full p-1 backdrop-blur-sm"
+          className="absolute right-2 top-1/2 -translate-y-1/2 bg-black/40 rounded-full p-1 backdrop-blur-sm cursor-pointer"
         >
           <ChevronRight className="w-5 h-5 text-white" />
         </button>

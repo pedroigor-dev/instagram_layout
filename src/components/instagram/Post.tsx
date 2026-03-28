@@ -1,9 +1,11 @@
 "use client";
 
+import { useState } from "react";
 import { Music2, MoreHorizontal } from "lucide-react";
 import { Avatar } from "./Avatar";
 import { PostImage } from "./PostImage";
 import { PostActions } from "./PostActions";
+import { PostOptionsModal } from "./PostOptionsModal";
 import { useFollow } from "@/hooks/useFollow";
 import { cn } from "@/lib/utils";
 import type { Post } from "@/types/instagram";
@@ -14,6 +16,7 @@ interface PostProps {
 
 export function Post({ post }: PostProps) {
   const { isFollowing, toggle: toggleFollow } = useFollow(post.author.isFollowing);
+  const [optionsOpen, setOptionsOpen] = useState(false);
 
   return (
     <article className="mb-4">
@@ -61,9 +64,19 @@ export function Post({ post }: PostProps) {
             )}
           </div>
         </div>
-        <button className="p-1 bg-transparent border-none cursor-pointer shrink-0">
+        <button
+          onClick={() => setOptionsOpen(true)}
+          className="p-1 bg-transparent border-none cursor-pointer shrink-0 rounded-full transition-colors duration-150 hover:bg-neutral-100 dark:hover:bg-neutral-800"
+        >
           <MoreHorizontal className="w-6 h-6" />
         </button>
+        {optionsOpen && (
+          <PostOptionsModal
+            onClose={() => setOptionsOpen(false)}
+            isFollowing={isFollowing}
+            onUnfollow={toggleFollow}
+          />
+        )}
       </div>
 
       <PostImage post={post} />
