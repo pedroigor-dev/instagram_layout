@@ -2,6 +2,23 @@
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
 
+/* Hide scrollbar utility */
+@utility scrollbar-hide {
+  &::-webkit-scrollbar { display: none; }
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Floating likers animation */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-4px); }
+}
+
+@utility animate-float {
+  animation: float 2.5s ease-in-out infinite;
+}
+
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
