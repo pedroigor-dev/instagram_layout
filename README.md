@@ -1,36 +1,133 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Instagram Clone
 
-## Getting Started
+Este projeto é uma recriação fiel da interface do Instagram para web, construída do zero com foco em qualidade de código, fidelidade visual e boas práticas de desenvolvimento front-end moderno.
 
-First, run the development server:
+Não se trata de um template ou boilerplate. Cada detalhe — das animações de transição de tema ao comportamento dos modais — foi implementado com intenção.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+---
+
+## Sobre o projeto
+
+O objetivo foi replicar a experiência real do Instagram com o máximo de fidelidade possível: stories, feed com filtros, painel de sugestões com seguidores em comum, dark mode com efeitos visuais de transição, navegação mobile e muito mais.
+
+Tudo que você vê na tela foi construído com componentes React reutilizáveis, tipagem TypeScript estrita e estilos utilitários com Tailwind CSS v4.
+
+---
+
+## Tecnologias
+
+- **Next.js 16** com App Router
+- **React 19** com hooks modernos (`useCallback`, `useState`, `useRef`)
+- **TypeScript 5** — tipagem completa em todos os componentes e dados
+- **Tailwind CSS v4** — com `@utility`, `@keyframes` e `@custom-variant` nativos
+- **Lucide React** — ícones consistentes e afiados
+- **tw-animate-css** — complemento de animações utilitárias
+- **shadcn/ui** — base de componentes acessíveis
+
+---
+
+## Funcionalidades implementadas
+
+**Feed**
+- Listagem de posts com imagens em carrossel
+- Like e save com animação de feedback visual
+- Filtro de feed por categoria: Misto, Só amigos, Só recomendados
+- Modal de opções do post (denunciar, seguir, favoritos, etc.)
+- Floating likers — avatares flutuantes sobre a imagem
+
+**Stories**
+- Barra horizontal com scroll, ring de gradiente neon nos não vistos
+- Botão de adicionar story próprio
+
+**Painel direito**
+- Conta ativa com opção de trocar
+- Sugestões com nome de exibição, badge de verificado e seguidores em comum com avatares sobrepostos
+
+**Dark mode**
+- Toggle com animação de spark burst (8 partículas irradiando)
+- Transição escurecer: overlay preto com letras Z flutuando (sleep)
+- Transição clarear: overlay branco com sol girando e raios animados (wake)
+- Renderizado via `createPortal` para evitar conflitos de stacking context
+
+**Mobile**
+- Header com logo em fonte Billabong, ícones de pesquisa, notificação e toggle de tema
+- Navigation bar inferior com 6 itens: Home, Search, Reels, Criar, Direct e Avatar
+
+---
+
+## Arquitetura e práticas
+
+**Separação de responsabilidades**
+
+Cada preocupação tem seu lugar. Tipos em `src/types/`, lógica de estado em `src/hooks/`, dados simulados em `src/data/mock.ts` e componentes visuais em `src/components/instagram/`. Nenhum componente faz mais do que deveria.
+
+**Hooks customizados**
+
+A lógica de interação foi extraída para hooks focados:
+
+- `useLike` — estado de like com contagem e animação
+- `useSave` — estado de save isolado
+- `useFollow` — toggle de seguir/deixar de seguir
+- `useCarousel` — navegação entre imagens do post
+
+**Portais e stacking context**
+
+Overlays como o modal de tema e o de opções do post são renderizados diretamente no `document.body` via `createPortal`. Isso garante que efeitos de `transform` em elementos pai não criem stacking contexts isolados que quebrariam o z-index dos overlays.
+
+**Z-index gerenciado**
+
+A hierarquia de camadas é explícita e intencional:
+
+```
+Sidebar          z-100000
+Overlay de tema  z-99999
+Modal de opções  z-100001
+Modais de filtro z-50
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+**Animações com CSS puro**
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Todas as animações (spark burst, overlay de tema, modal spring, float dos likers) são declaradas com `@keyframes` e `@utility` nativos no Tailwind v4, sem bibliotecas de animação externas.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+**TypeScript estrito**
 
-## Learn More
+Todos os dados, props e estados são tipados. A interface `Post`, `User`, `Story` e `Suggestion` refletem exatamente a estrutura dos dados consumidos pelos componentes, sem uso de `any`.
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Estrutura de pastas
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```
+src/
+  app/
+    layout.tsx       — root layout com ThemeProvider e SplashScreen
+    page.tsx         — composição da página principal
+    globals.css      — keyframes, utilities e variáveis CSS globais
+  components/
+    instagram/       — componentes específicos da aplicação
+    ui/              — componentes base reutilizáveis
+  data/
+    mock.ts          — dados simulados (posts, stories, sugestões, usuário)
+  hooks/             — lógica de estado extraída e reutilizável
+  types/
+    instagram.ts     — interfaces TypeScript de domínio
+  lib/
+    utils.ts         — utilitários (cn, merge de classes)
+```
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Como rodar
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+npm install
+npm run dev
+```
+
+Acesse `http://localhost:3000`.
+
+---
+
+## Créditos
+
+Feito por [devpedro](https://www.instagram.com/_pedroigorc/) como exercício de engenharia front-end e fidelidade de produto.
